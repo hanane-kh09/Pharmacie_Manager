@@ -64,10 +64,11 @@ src/
 ---
 
 ### Diagramme de cas d’utilisation
+Ce diagramme présente les interactions entre l’utilisateur (pharmacien) et le système.
+
 <img width="2816" height="1536" alt="Diagramme de cas d’utilisation" src="https://github.com/user-attachments/assets/f63b9e74-81e8-48da-8960-456dcd56fdc0" />
 
 
-Ce diagramme présente les interactions entre l’utilisateur (pharmacien) et le système.
 
 
 
