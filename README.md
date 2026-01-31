@@ -181,9 +181,8 @@ L’application contient quatre onglets :
 
 Projet académique réalisé dans le cadre du module Java Avancé.
 
-## Vidéo sur l
+## Vidéo sur les interfaces de l'application
 
 https://github.com/user-attachments/assets/50ac8fea-2ab6-4fd6-827e-3218b826276a
 
-es interfaces de l'application
 
