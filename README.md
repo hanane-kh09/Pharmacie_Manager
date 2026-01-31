@@ -62,15 +62,18 @@ src/
 
 ---
 
-## Analyse et Conception UML
-
 ### Diagramme de cas d’utilisation
 
 Ce diagramme présente les interactions entre l’utilisateur (pharmacien) et le système.
 
+
+
 ### Diagramme de classes
 
 Le diagramme de classes décrit la structure statique de l’application et les relations entre les différentes entités.
+
+<img width="2816" height="1536" alt="diagramme-de-classe" src="https://github.com/user-attachments/assets/b9187572-62fe-453c-93b7-eddd06a6d5dd" />
+
 
 ---
 
@@ -174,3 +177,6 @@ L’application contient quatre onglets :
 ## Auteur
 
 Projet académique réalisé dans le cadre du module Java Avancé.
+
+## Vidéo sur les interfaces de l'application
+
