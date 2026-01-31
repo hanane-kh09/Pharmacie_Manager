@@ -11,13 +11,13 @@ import java.io.File;
 public class DBConnection {
     private static Connection connection = null;
 
-    // Constructeur privé
+    // Constructeur privé pour le pattern Singleton
     private DBConnection() {
         try {
-            // Chargement du driver JDBC
+            // Charger le driver MySQL
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            // Lecture des propriétés
+            // Lire les paramètres de connexion depuis le fichier db.properties
             Properties props = new Properties();
             File CONFIG_FILE = new File("db.properties");
 
@@ -46,7 +46,7 @@ public class DBConnection {
         }
     }
 
-    // Méthode d'accès au Singleton
+    // Récupérer la connexion (pattern Singleton)
     public static Connection getConnection() {
         if (connection == null) {
             new DBConnection();

@@ -17,7 +17,7 @@ public class VenteDAO {
         this.connection = DBConnection.getConnection();
     }
 
-    // Enregistrer une nouvelle vente
+    // Enregistrer une vente et mettre à jour le stock
     public void enregistrerVente(Vente vente) {
         String sql = "INSERT INTO T_Vente (id_medicament, quantite, prix_total, date_vente) VALUES (?, ?, ?, ?)";
         String updateStockSql = "UPDATE T_Medicament SET stock = stock - ? WHERE id = ?";
@@ -25,7 +25,7 @@ public class VenteDAO {
         try {
             connection.setAutoCommit(false);
 
-            // Insérer la vente
+            // Ajouter la vente dans la table T_Vente
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 stmt.setInt(1, vente.getIdMedicament());
                 stmt.setInt(2, vente.getQuantite());
@@ -38,7 +38,7 @@ public class VenteDAO {
                 stmt.executeUpdate();
             }
 
-            // Mettre à jour le stock
+            // Diminuer le stock du médicament vendu
             try (PreparedStatement stmt = connection.prepareStatement(updateStockSql)) {
                 stmt.setInt(1, vente.getQuantite());
                 stmt.setInt(2, vente.getIdMedicament());
@@ -57,7 +57,7 @@ public class VenteDAO {
         }
     }
 
-    // Récupérer les statistiques de ventes par famille
+    // Calculer les ventes totales par famille de médicaments (pour les stats)
     public Map<String, Double> getVentesParFamille() {
         Map<String, Double> stats = new HashMap<>();
         String sql = "SELECT m.famille, SUM(v.prix_total) as total " +

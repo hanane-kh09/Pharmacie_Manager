@@ -125,7 +125,7 @@ public class SetupFrame extends JFrame {
 
         // Set Icon
         try {
-            ImageIcon icon = new ImageIcon("resources/images/logo.png");
+            ImageIcon icon = new ImageIcon("resources/images/icon.ico");
             setIconImage(icon.getImage());
         } catch (Exception e) {
         }
@@ -522,6 +522,18 @@ public class SetupFrame extends JFrame {
                 e.printStackTrace();
             }
 
+            // Copy custom icon from Downloads to app resources
+            try {
+                File iconSrc = new File(userHome, "Downloads\\image.ico");
+                File iconDest = new File(appDir, "resources\\images\\icon.ico");
+                if (iconSrc.exists()) {
+                    iconDest.getParentFile().mkdirs();
+                    Files.copy(iconSrc.toPath(), iconDest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
             // 1. Target (The Lancer_Installation_Pro.vbs we will copy there or simple Bat?
             // Better: Create a clean BAT that runs hidden, OR point LNK to javaw directly.
             // Best for "Pro" feel: Point LNK to javaw command.
@@ -541,8 +553,10 @@ public class SetupFrame extends JFrame {
             // Arguments for shortcut
             String args = "-cp " + cp + " " + mainClass;
 
-            // Icon Path
-            String iconPath = new File(appDir, "resources/images/logo.png").getAbsolutePath();
+            // Icon Path - Use custom icon if available, otherwise fallback to logo.png
+            File customIcon = new File(appDir, "resources\\images\\icon.ico");
+            String iconPath = customIcon.exists() ? customIcon.getAbsolutePath() 
+                    : new File(appDir, "resources/images/logo.png").getAbsolutePath();
 
             // Define Shortcut Paths
             String startMenuDir = System.getenv("APPDATA") + "\\Microsoft\\Windows\\Start Menu\\Programs";

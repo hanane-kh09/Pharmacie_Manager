@@ -26,7 +26,7 @@ public class MedicamentPanel extends JPanel {
         setLayout(new BorderLayout(10, 10));
         setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 
-        // Barre de recherche en haut
+        // Partie recherche en haut
         JPanel panelNord = new JPanel(new FlowLayout(FlowLayout.LEFT));
         panelNord.setBackground(new Color(245, 245, 245));
         txtRecherche = new JTextField(20);
@@ -37,7 +37,7 @@ public class MedicamentPanel extends JPanel {
         panelNord.add(btnRecherche);
         add(panelNord, BorderLayout.NORTH);
 
-        // Tableau au centre
+        // Le tableau avec tous les médicaments
         String[] colonnes = { "ID", "Nom", "Famille", "Prix", "Stock", "ID Fournisseur", "Alerte" };
         tableModel = new DefaultTableModel(colonnes, 0) {
             @Override
@@ -52,7 +52,7 @@ public class MedicamentPanel extends JPanel {
 
         add(new JScrollPane(table), BorderLayout.CENTER);
 
-        // Formulaire à droite
+        // Formulaire pour ajouter/modifier un médicament
         JPanel panelForm = new JPanel(new GridBagLayout());
         panelForm.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createTitledBorder("Détails du Médicament"),
@@ -97,7 +97,7 @@ public class MedicamentPanel extends JPanel {
         cbFournisseur = new JComboBox<>();
         panelForm.add(cbFournisseur, gbc);
 
-        // Boutons
+        // Les boutons d'action
         JPanel panelBtn = new JPanel(new GridLayout(2, 2, 5, 5));
 
         JButton btnAjouter = createStyledButton("Ajouter", MainFrame.PRIMARY_COLOR);
@@ -117,13 +117,13 @@ public class MedicamentPanel extends JPanel {
 
         add(panelForm, BorderLayout.EAST);
 
-        // Actions des boutons
+        // Connecter les boutons aux fonctions
         btnAjouter.addActionListener(e -> ajouterMedicament());
         btnModifier.addActionListener(e -> modifierMedicament());
         btnSupprimer.addActionListener(e -> supprimerMedicament());
         btnVider.addActionListener(e -> viderChamps());
 
-        // Quand on clique sur une ligne, remplir le formulaire
+        // Si on clique sur une ligne du tableau, ça remplit le formulaire automatiquement
         table.getSelectionModel().addListSelectionListener(e -> remplirFormulaire());
 
         chargerFournisseurs();
@@ -242,7 +242,7 @@ public class MedicamentPanel extends JPanel {
         table.clearSelection();
     }
 
-    // Colorer les lignes avec stock faible en rouge
+    // Cette classe permet de colorer en rouge les lignes où le stock est faible
     private class StocksAlertRenderer extends javax.swing.table.DefaultTableCellRenderer {
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,

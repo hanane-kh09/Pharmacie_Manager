@@ -18,7 +18,7 @@ public class MedicamentDAO {
         this.connection = DBConnection.getConnection();
     }
 
-    // Ajouter un nouveau médicament
+    // Fonction pour ajouter un médicament dans la base
     public void ajouter(Medicament med) {
         String sql = "INSERT INTO T_Medicament (nom, famille, prix, stock, id_fournisseur) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -36,7 +36,7 @@ public class MedicamentDAO {
         }
     }
 
-    // Modifier un médicament existant
+    // Modifier les infos d'un médicament existant
     public void modifier(Medicament med) {
         String sql = "UPDATE T_Medicament SET nom=?, famille=?, prix=?, stock=?, id_fournisseur=? WHERE id=?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -55,19 +55,19 @@ public class MedicamentDAO {
         }
     }
 
-    // Supprimer un médicament (et ses ventes associées)
+    // Supprimer un médicament (attention ça supprime aussi ses ventes)
     public void supprimer(int id) {
         String sqlVente = "DELETE FROM T_Vente WHERE id_medicament=?";
         String sqlMed = "DELETE FROM T_Medicament WHERE id=?";
 
         try {
-            // D'abord supprimer les ventes liées
+            // Il faut d'abord supprimer les ventes liées à ce médicament
             try (PreparedStatement stmt = connection.prepareStatement(sqlVente)) {
                 stmt.setInt(1, id);
                 stmt.executeUpdate();
             }
 
-            // Puis supprimer le médicament
+            // Ensuite on peut supprimer le médicament
             try (PreparedStatement stmt = connection.prepareStatement(sqlMed)) {
                 stmt.setInt(1, id);
                 stmt.executeUpdate();
@@ -77,7 +77,7 @@ public class MedicamentDAO {
         }
     }
 
-    // Lister tous les médicaments
+    // Récupérer tous les médicaments
     public List<Medicament> lister() {
         List<Medicament> liste = new ArrayList<>();
         String sql = "SELECT * FROM T_Medicament";
@@ -98,7 +98,7 @@ public class MedicamentDAO {
         return liste;
     }
 
-    // Rechercher des médicaments par nom ou famille
+    // Chercher des médicaments par nom ou famille
     public List<Medicament> rechercher(String motCle) {
         List<Medicament> liste = new ArrayList<>();
         String sql = "SELECT * FROM T_Medicament WHERE nom LIKE ? OR famille LIKE ?";
@@ -121,7 +121,7 @@ public class MedicamentDAO {
         return liste;
     }
 
-    // Récupérer un médicament par son ID
+    // Trouver un médicament par son ID
     public Medicament getById(int id) {
         String sql = "SELECT * FROM T_Medicament WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {

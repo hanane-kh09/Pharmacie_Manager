@@ -20,7 +20,7 @@ public class Medicament {
         this.idFournisseur = idFournisseur;
     }
 
-    // Constructeur sans ID (pour l'ajout)
+    // Constructeur quand on ajoute un nouveau médicament (pas besoin de l'ID)
     public Medicament(String nom, String famille, double prix, int stock, int idFournisseur) {
         this.nom = nom;
         this.famille = famille;
@@ -29,7 +29,7 @@ public class Medicament {
         this.idFournisseur = idFournisseur;
     }
 
-    // Getters et Setters
+    // Getters et setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

@@ -18,7 +18,7 @@ public class FournisseurDAO {
         this.connection = DBConnection.getConnection();
     }
 
-    // Ajouter un nouveau fournisseur
+    // Ajouter un fournisseur dans la base
     public void ajouter(Fournisseur fournisseur) {
         String sql = "INSERT INTO T_Fournisseur (nom, ville, contact) VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -31,7 +31,7 @@ public class FournisseurDAO {
         }
     }
 
-    // Lister tous les fournisseurs
+    // Récupérer tous les fournisseurs
     public List<Fournisseur> lister() {
         List<Fournisseur> liste = new ArrayList<>();
         String sql = "SELECT * FROM T_Fournisseur";
@@ -50,7 +50,7 @@ public class FournisseurDAO {
         return liste;
     }
 
-    // Modifier un fournisseur
+    // Mettre à jour un fournisseur
     public void modifier(Fournisseur f) {
         String sql = "UPDATE T_Fournisseur SET nom=?, ville=?, contact=? WHERE id=?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -64,7 +64,7 @@ public class FournisseurDAO {
         }
     }
 
-    // Supprimer un fournisseur
+    // Effacer un fournisseur
     public void supprimer(int id) {
         String sql = "DELETE FROM T_Fournisseur WHERE id=?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {

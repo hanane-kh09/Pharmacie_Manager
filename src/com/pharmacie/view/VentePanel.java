@@ -58,7 +58,7 @@ public class VentePanel extends JPanel {
         panelForm.add(new JLabel("Total à payer :"));
         panelForm.add(lblPrixTotal);
 
-        // Sélecteur de date
+        // Champ pour choisir la date de vente
         SpinnerDateModel dateModel = new SpinnerDateModel();
         dateSpinner = new JSpinner(dateModel);
         JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(dateSpinner, "dd/MM/yyyy");
@@ -73,20 +73,20 @@ public class VentePanel extends JPanel {
 
         add(panelForm);
 
-        // Charger la liste des médicaments
+        // Remplir la liste déroulante avec tous les médicaments
         chargerMedicaments();
 
-        // Quand on change de médicament, mettre à jour les infos
+        // Quand on sélectionne un médicament, afficher son prix et stock
         cbMedicament.addActionListener(e -> updateInfoMedicament());
 
         btnValider.addActionListener(e -> validerVente());
 
-        // Afficher les infos du premier médicament
+        // Au démarrage, afficher les infos du premier médicament de la liste
         if (cbMedicament.getItemCount() > 0)
             updateInfoMedicament();
     }
 
-    // Charger tous les médicaments dans la liste
+    // Fonction pour charger tous les médicaments dans la liste déroulante
     public void chargerMedicaments() {
         cbMedicament.removeAllItems();
         List<Medicament> list = medicamentDAO.lister();
@@ -95,7 +95,7 @@ public class VentePanel extends JPanel {
         }
     }
 
-    // Mettre à jour le prix et le stock quand on sélectionne un médicament
+    // Afficher le prix et le stock du médicament sélectionné
     private void updateInfoMedicament() {
         Medicament m = (Medicament) cbMedicament.getSelectedItem();
         if (m != null) {
@@ -105,7 +105,7 @@ public class VentePanel extends JPanel {
         }
     }
 
-    // Calculer le prix total
+    // Calculer le total en fonction de la quantité
     private void calculerTotal() {
         try {
             Medicament m = (Medicament) cbMedicament.getSelectedItem();
@@ -119,7 +119,7 @@ public class VentePanel extends JPanel {
         }
     }
 
-    // Enregistrer la vente
+    // Fonction pour enregistrer la vente dans la base de données
     private void validerVente() {
         try {
             Medicament m = (Medicament) cbMedicament.getSelectedItem();
@@ -138,7 +138,7 @@ public class VentePanel extends JPanel {
                 return;
             }
 
-            // Récupérer la date sélectionnée
+            // Prendre la date choisie dans le spinner
             java.util.Date selectedDate = (java.util.Date) dateSpinner.getValue();
             java.sql.Timestamp dateVente = new java.sql.Timestamp(selectedDate.getTime());
 
@@ -149,7 +149,7 @@ public class VentePanel extends JPanel {
             venteDAO.enregistrerVente(vente);
             JOptionPane.showMessageDialog(this, "Vente enregistrée avec succès !");
 
-            // Recharger la liste (le stock a changé)
+            // Recharger les médicaments car le stock a été mis à jour
             chargerMedicaments();
             txtQuantite.setText("1");
             dateSpinner.setValue(new java.util.Date());

@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class MainFrame extends JFrame {
 
-    // Couleurs du thème
+    // Les couleurs qu'on utilise dans l'appli
     public static final Color PRIMARY_COLOR = Color.decode("#7cc248");
     public static final Color SECONDAY_COLOR = Color.decode("#1d3809");
     public static final Color TEXT_COLOR = Color.WHITE;
@@ -24,7 +24,7 @@ public class MainFrame extends JFrame {
 
         getContentPane().setLayout(new java.awt.BorderLayout());
 
-        // Création des onglets
+        // Créer les différents onglets
         tabbedPane = new javax.swing.JTabbedPane();
 
         medicamentPanel = new MedicamentPanel();
@@ -37,12 +37,12 @@ public class MainFrame extends JFrame {
         tabbedPane.addTab("Ventes", ventePanel);
         tabbedPane.addTab("Statistiques", statsPanel);
 
-        // Vérifier le stock faible au démarrage
+        // Au démarrage, vérifier s'il y a des médicaments en rupture de stock
         SwingUtilities.invokeLater(this::checkLowStock);
 
         getContentPane().add(tabbedPane, java.awt.BorderLayout.CENTER);
 
-        // Quand on change d'onglet, rafraichir les données
+        // Quand on change d'onglet, mettre à jour les données
         tabbedPane.addChangeListener(e -> {
             if (tabbedPane.getSelectedComponent() == ventePanel) {
                 ventePanel.chargerMedicaments();
@@ -57,12 +57,12 @@ public class MainFrame extends JFrame {
     }
 
     private void initCustomDesign() {
-        // Panneau du haut avec le logo
+        // Créer le bandeau du haut avec le logo
         javax.swing.JPanel headerPanel = new javax.swing.JPanel(new java.awt.BorderLayout());
         headerPanel.setBackground(SECONDAY_COLOR);
         headerPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
-        // Charger le logo
+        // Charger et redimensionner le logo
         ImageIcon logoIcon = new ImageIcon("resources/images/logo.png");
         Image scaledImg = logoIcon.getImage().getScaledInstance(60, 60, java.awt.Image.SCALE_SMOOTH);
         JLabel lblLogo = new JLabel(" Pharmacie Manager", new ImageIcon(scaledImg), SwingConstants.LEFT);
@@ -72,18 +72,19 @@ public class MainFrame extends JFrame {
         headerPanel.add(lblLogo, java.awt.BorderLayout.WEST);
         getContentPane().add(headerPanel, java.awt.BorderLayout.NORTH);
 
-        // Icône de la fenêtre
-        setIconImage(logoIcon.getImage());
+        // Mettre l'icône de l'application
+        ImageIcon appIcon = new ImageIcon("resources/images/icon.ico");
+        setIconImage(appIcon.getImage());
     }
 
-    // Variables
+    // Déclaration des variables
     private javax.swing.JTabbedPane tabbedPane;
     private com.pharmacie.view.MedicamentPanel medicamentPanel;
     private com.pharmacie.view.VentePanel ventePanel;
     private com.pharmacie.view.StatistiquesPanel statsPanel;
     private com.pharmacie.view.FournisseurPanel fournisseurPanel;
 
-    // Vérifier s'il y a des médicaments avec stock faible
+    // Fonction qui vérifie s'il y a des médicaments avec un stock faible et affiche une alerte
     private void checkLowStock() {
         com.pharmacie.dao.MedicamentDAO dao = new com.pharmacie.dao.MedicamentDAO();
         java.util.List<com.pharmacie.model.Medicament> list = dao.lister();
@@ -102,7 +103,7 @@ public class MainFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-        // Utiliser le thème Nimbus pour un meilleur rendu
+        // Utiliser Nimbus pour que ça soit plus joli
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -114,7 +115,7 @@ public class MainFrame extends JFrame {
                 }
             }
         } catch (Exception e) {
-            // Si Nimbus n'est pas dispo, utiliser le thème par défaut
+            // Si Nimbus marche pas, prendre le thème par défaut
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             } catch (Exception ex) {

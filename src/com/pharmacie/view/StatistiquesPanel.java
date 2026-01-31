@@ -41,11 +41,11 @@ public class StatistiquesPanel extends JPanel {
         int height = getHeight();
         int padding = 50;
         
-        // Titre
+        // Afficher le titre du graphique
         g2.setFont(new Font("Arial", Font.BOLD, 16));
         g2.drawString("Ventes par Famille (en €)", width / 2 - 100, 50);
 
-        // Calculer la valeur max pour l'échelle
+        // Trouver la valeur maximale pour ajuster l'échelle du graphique
         int barWidth = 50;
         int x = padding;
         int maxVal = 0;
@@ -57,7 +57,7 @@ public class StatistiquesPanel extends JPanel {
 
         int chartHeight = height - 2 * padding;
         
-        // Dessiner les barres
+        // Dessiner chaque barre du graphique avec une couleur différente
         g2.setFont(new Font("Arial", Font.PLAIN, 12));
         int i = 0;
         Color[] colors = {Color.BLUE, Color.RED, Color.GREEN, Color.ORANGE, Color.MAGENTA};
@@ -74,7 +74,7 @@ public class StatistiquesPanel extends JPanel {
             g2.setColor(Color.BLACK);
             g2.drawRect(x, height - padding - barHeight, barWidth, barHeight);
             
-            // Étiquettes
+            // Afficher le nom de la famille et le montant
             g2.drawString(famille, x, height - padding + 15);
             g2.drawString(String.format("%.1f€", valeur), x, height - padding - barHeight - 5);
             

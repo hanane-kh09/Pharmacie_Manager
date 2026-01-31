@@ -3,9 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/ytr/Desktop/Pharmacie/src/com/pharmacie/model/Medicament.java</file>
             <file>file:/C:/Users/ytr/Desktop/Pharmacie/src/com/pharmacie/view/MedicamentPanel.java</file>
-            <file>file:/C:/Users/ytr/Desktop/Pharmacie/src/com/pharmacie/view/MainFrame.java</file>
+            <file>file:/C:/Users/ytr/Desktop/Pharmacie/src/com/pharmacie/model/Fournisseur.java</file>
+            <file>file:/C:/Users/ytr/Desktop/Pharmacie/src/com/pharmacie/dao/VenteDAO.java</file>
+            <file>file:/C:/Users/ytr/Desktop/Pharmacie/src/com/pharmacie/view/StatistiquesPanel.java</file>
+            <file>file:/C:/Users/ytr/Desktop/Pharmacie/src/com/pharmacie/dao/UtilisateurDAO.java</file>
+            <file>file:/C:/Users/ytr/Desktop/Pharmacie/src/com/pharmacie/model/Vente.java</file>
+            <file>file:/C:/Users/ytr/Desktop/Pharmacie/src/com/pharmacie/util/DBConnection.java</file>
             <file>file:/C:/Users/ytr/Desktop/Pharmacie/src/com/pharmacie/setup/SetupFrame.java</file>
+            <file>file:/C:/Users/ytr/Desktop/Pharmacie/src/com/pharmacie/view/VentePanel.java</file>
+            <file>file:/C:/Users/ytr/Desktop/Pharmacie/src/com/pharmacie/dao/FournisseurDAO.java</file>
+            <file>file:/C:/Users/ytr/Desktop/Pharmacie/src/com/pharmacie/dao/MedicamentDAO.java</file>
+            <file>file:/C:/Users/ytr/Desktop/Pharmacie/src/com/pharmacie/view/MainFrame.java</file>
+            <file>file:/C:/Users/ytr/Desktop/Pharmacie/src/com/pharmacie/view/FournisseurPanel.java</file>
         </group>
     </open-files>
 </project-private>

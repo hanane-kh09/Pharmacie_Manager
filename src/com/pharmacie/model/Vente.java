@@ -20,14 +20,14 @@ public class Vente {
         this.prixTotal = prixTotal;
     }
 
-    // Constructeur sans ID (pour l'ajout)
+    // Constructeur pour enregistrer une nouvelle vente (sans ID)
     public Vente(int idMedicament, int quantite, double prixTotal) {
         this.idMedicament = idMedicament;
         this.quantite = quantite;
         this.prixTotal = prixTotal;
     }
 
-    // Getters et Setters
+    // Getters et setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

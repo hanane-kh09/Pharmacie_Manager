@@ -16,14 +16,14 @@ public class Fournisseur {
         this.contact = contact;
     }
 
-    // Constructeur sans ID (pour l'ajout)
+    // Constructeur pour créer un nouveau fournisseur (sans ID)
     public Fournisseur(String nom, String ville, String contact) {
         this.nom = nom;
         this.ville = ville;
         this.contact = contact;
     }
 
-    // Getters et Setters
+    // Getters et setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

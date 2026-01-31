@@ -19,7 +19,7 @@ public class FournisseurPanel extends JPanel {
         setLayout(new BorderLayout(10, 10));
         setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 
-        // Tableau au centre
+        // Le tableau pour afficher tous les fournisseurs
         String[] colonnes = { "ID", "Nom", "Ville", "Contact" };
         tableModel = new DefaultTableModel(colonnes, 0) {
             @Override
@@ -32,7 +32,7 @@ public class FournisseurPanel extends JPanel {
         table.setRowHeight(25);
         add(new JScrollPane(table), BorderLayout.CENTER);
 
-        // Formulaire à droite
+        // Formulaire pour ajouter/modifier les infos d'un fournisseur
         JPanel panelForm = new JPanel(new GridBagLayout());
         panelForm.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createTitledBorder("Détails du Fournisseur"),
@@ -63,7 +63,7 @@ public class FournisseurPanel extends JPanel {
         txtContact = new JTextField(15);
         panelForm.add(txtContact, gbc);
 
-        // Boutons
+        // Les boutons d'action
         JPanel panelBtn = new JPanel(new GridLayout(2, 2, 5, 5));
         JButton btnAjouter = createStyledButton("Ajouter", MainFrame.PRIMARY_COLOR);
         JButton btnModifier = createStyledButton("Modifier", Color.ORANGE);
@@ -82,7 +82,7 @@ public class FournisseurPanel extends JPanel {
 
         add(panelForm, BorderLayout.EAST);
 
-        // Actions
+        // Connecter les boutons
         btnAjouter.addActionListener(e -> ajouter());
         btnModifier.addActionListener(e -> modifier());
         btnSupprimer.addActionListener(e -> supprimer());

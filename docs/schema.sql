@@ -1,8 +1,8 @@
--- Création de la base de données
+-- Script pour créer la base de données de la pharmacie
 CREATE DATABASE IF NOT EXISTS db_pharmacie;
 USE db_pharmacie;
 
--- Table des Fournisseurs
+-- Table pour stocker les fournisseurs
 CREATE TABLE IF NOT EXISTS T_Fournisseur (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS T_Fournisseur (
     contact VARCHAR(100)
 );
 
--- Table des Médicaments
+-- Table des médicaments
 CREATE TABLE IF NOT EXISTS T_Medicament (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS T_Medicament (
     CONSTRAINT fk_fournisseur FOREIGN KEY (id_fournisseur) REFERENCES T_Fournisseur(id) ON DELETE SET NULL
 );
 
--- Table des Ventes
+-- Table pour enregistrer les ventes
 CREATE TABLE IF NOT EXISTS T_Vente (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_medicament INT NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS T_Vente (
     CONSTRAINT fk_medicament FOREIGN KEY (id_medicament) REFERENCES T_Medicament(id)
 );
 
--- Insertion de données de test
+-- Quelques données de test pour commencer
 INSERT INTO T_Fournisseur (nom, ville, contact) VALUES 
 ('PharmaDistribute', 'Paris', 'contact@pharmadistrib.fr'),
 ('MediGlobal', 'Lyon', 'service.client@mediglobal.com');
