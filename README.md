@@ -59,10 +59,13 @@ src/
 ```
 
 ### Architecture MVC et DAO
+<img width="2816" height="1536" alt="architecture" src="https://github.com/user-attachments/assets/df347d16-fbc6-40c8-92a3-0ffe552624bd" />
 
 ---
 
 ### Diagramme de cas d’utilisation
+<img width="2816" height="1536" alt="Diagramme de cas d’utilisation" src="https://github.com/user-attachments/assets/f63b9e74-81e8-48da-8960-456dcd56fdc0" />
+
 
 Ce diagramme présente les interactions entre l’utilisateur (pharmacien) et le système.
 
@@ -178,5 +181,9 @@ L’application contient quatre onglets :
 
 Projet académique réalisé dans le cadre du module Java Avancé.
 
-## Vidéo sur les interfaces de l'application
+## Vidéo sur l
+
+https://github.com/user-attachments/assets/50ac8fea-2ab6-4fd6-827e-3218b826276a
+
+es interfaces de l'application
 
